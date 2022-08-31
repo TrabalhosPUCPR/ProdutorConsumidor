@@ -26,3 +26,4 @@ replay_pid*
 .idea/
 *.docx
 *.iml
+output.txt
