@@ -1,5 +1,6 @@
 package Reports;
 
+import Entities.TimeManager;
 import Entities.Transporter.Transporter;
 
 import java.io.IOException;
@@ -7,10 +8,12 @@ import java.io.IOException;
 public class TransporterReport extends Report {
 
     Transporter[] transporters;
+    TimeManager timeManager;
 
-    public TransporterReport(String name, String output_path, Transporter[] transporters){
+    public TransporterReport(String name, String output_path, Transporter[] transporters, TimeManager timeManager){
         super(name, output_path);
         this.transporters = transporters;
+        this.timeManager = timeManager;
     }
 
     @Override

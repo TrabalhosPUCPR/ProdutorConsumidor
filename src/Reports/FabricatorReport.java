@@ -1,16 +1,18 @@
 package Reports;
 
 import Entities.Fabrication.Fabricator;
+import Entities.TimeManager;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class FabricatorReport extends Report{
     Fabricator[] fabricators;
+    TimeManager timeManager;
 
-    public FabricatorReport(String name, String output_path, Fabricator[] fabricators){
+    public FabricatorReport(String name, String output_path, Fabricator[] fabricators, TimeManager timeManager){
         super(name, output_path);
         this.fabricators = fabricators;
+        this.timeManager = timeManager;
     }
     @Override
     public void print() {

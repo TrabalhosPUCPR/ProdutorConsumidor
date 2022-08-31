@@ -1,10 +1,12 @@
 package Entities.Transporter;
 
+import Entities.DailyTask;
 import Entities.Queues.QueueDelivery;
 
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
-public class Transporter extends Thread{
+public class Transporter extends Thread implements DailyTask {
     String name;
     Semaphore semaphore;
     QueueDelivery queue_delivery;
@@ -38,11 +40,9 @@ public class Transporter extends Thread{
             throw new RuntimeException(e);
         }
     }
-
     public int getCount_delivered() {
         return count_delivered;
     }
-
     public String getTransporterName() {
         return name;
     }

@@ -1,5 +1,6 @@
 package Entities.Stores;
 
+import Entities.Entity;
 import Entities.Queues.QueueSale;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Store extends Thread{
+public class Store extends Entity {
 
     ArrayList<String> catalog;
     String name;
@@ -18,14 +19,15 @@ public class Store extends Thread{
     QueueSale queue;
     int[] sales_delay;
 
-    public Store(ArrayList<String> catalog, String name, QueueSale queue, Semaphore semaphore, Semaphore sem_fabricator, int[] sales_delay) {
-        this.catalog = catalog;
+    public Store(String name, Semaphore semaphore, QueueSale queue, int[] delays, ArrayList<String> productCatalog, Semaphore sem_fabricator) {
+        super(name, semaphore, queue, delays, productCatalog);
+        this.catalog = productCatalog;
         this.name = name;
         this.semaphore = semaphore;
         this.queue = queue;
         this.sem_fabricator = sem_fabricator;
         this.prodSales_count = new int[this.catalog.size()];
-        this.sales_delay = sales_delay;
+        this.sales_delay = delays;
         Arrays.fill(this.prodSales_count, 0);
     }
 

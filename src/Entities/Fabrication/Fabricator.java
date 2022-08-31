@@ -1,5 +1,6 @@
 package Entities.Fabrication;
 
+import Entities.DailyTask;
 import Entities.Queues.QueueDelivery;
 import Entities.Queues.QueueSale;
 import Entities.Stores.Sales;
@@ -7,7 +8,7 @@ import Entities.Stores.Sales;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
-public class Fabricator extends Thread{
+public class Fabricator extends Thread implements DailyTask {
     String name;
     Semaphore semaphore;
     Semaphore sem_transport;
