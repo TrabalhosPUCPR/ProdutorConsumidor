@@ -1,11 +1,9 @@
 package Entities;
 
 import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
 
 public abstract class Entity extends Thread implements DailyTask{
     protected String name;
-    protected Semaphore semaphore;
     protected int count;
     protected int[] delay;
     protected ArrayList<String> productCatalog;
@@ -13,9 +11,8 @@ public abstract class Entity extends Thread implements DailyTask{
     ArrayList<Integer> daily_times = new ArrayList<>();
     ArrayList<Integer> averageDailyTimes = new ArrayList<>();
 
-    public Entity(String name, Semaphore semaphore, int[] delays, ArrayList<String> productCatalog) {
+    public Entity(String name, int[] delays, ArrayList<String> productCatalog) {
         this.name = name;
-        this.semaphore = semaphore;
         this.delay = delays;
         this.count = 0;
         this.productCatalog = productCatalog;

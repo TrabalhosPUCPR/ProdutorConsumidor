@@ -13,8 +13,8 @@ public class Store extends Entity{
     Semaphore sem_fabricator;
     QueueSale queueSale;
 
-    public Store(String name, Semaphore semaphore, QueueSale queueSale, int[] delays, ArrayList<String> productCatalog, Semaphore sem_fabricator) {
-        super(name, semaphore, delays, productCatalog);
+    public Store(String name, QueueSale queueSale, int[] delays, ArrayList<String> productCatalog, Semaphore sem_fabricator) {
+        super(name, delays, productCatalog);
         this.sem_fabricator = sem_fabricator;
         this.prodSales_count = new int[productCatalog.size()];
         this.queueSale = queueSale;
@@ -26,7 +26,6 @@ public class Store extends Entity{
         try {
             Random rng = new Random();
             while (true){
-                //this.semaphore.acquire();
                 int delay = rng.nextInt(this.delay[0], this.delay[1]);
                 Thread.sleep(delay);
                 int index_prod = rng.nextInt(this.productCatalog.size());
@@ -37,7 +36,6 @@ public class Store extends Entity{
                 this.queueSale.add(sales);
                 System.out.println("Item " + sales.product + " na loja " + this.getEntityName() + " vendido! Agora vai ser fabricado!");
                 this.sem_fabricator.release();
-                //this.semaphore.release();
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

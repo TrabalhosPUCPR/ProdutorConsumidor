@@ -8,8 +8,4 @@ public class Delivery {
     public Delivery(Sales sales) {
         this.sales = sales;
     }
-
-    public Sales getVenda() {
-        return sales;
-    }
 }

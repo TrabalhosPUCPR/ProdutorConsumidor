@@ -26,10 +26,8 @@ public class Fabricator extends Tasks {
     public void run() {
         try {
             while (true) {
-                do {
-                    this.semaphore.acquire();
-                } while (this.limit <= this.current);
-                this.current++;
+                this.semaphore.acquire();
+                this.limit.acquire();
                 Sales sale = this.queue_sale.removeFirst();
                 Random random = new Random();
                 int productIndex = this.productCatalog.indexOf(sale.getProduct());

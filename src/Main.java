@@ -37,14 +37,14 @@ public class Main {
         // lojas
         int[] store_delay = TimeManager.delay(new int[]{100, 1500});
         Store[] stores = new Store[8];
-        stores[0] = new Store("A", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[1] = new Store("B", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[2] = new Store("C", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[3] = new Store("D", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[4] = new Store("E", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[5] = new Store("F", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[6] = new Store("G", sem_loja, queue_sales, store_delay, products, sem_fabricator);
-        stores[7] = new Store("H", sem_loja, queue_sales, store_delay, products, sem_fabricator);
+        stores[0] = new Store("A", queue_sales, store_delay, products, sem_fabricator);
+        stores[1] = new Store("B", queue_sales, store_delay, products, sem_fabricator);
+        stores[2] = new Store("C", queue_sales, store_delay, products, sem_fabricator);
+        stores[3] = new Store("D", queue_sales, store_delay, products, sem_fabricator);
+        stores[4] = new Store("E", queue_sales, store_delay, products, sem_fabricator);
+        stores[5] = new Store("F", queue_sales, store_delay, products, sem_fabricator);
+        stores[6] = new Store("G", queue_sales, store_delay, products, sem_fabricator);
+        stores[7] = new Store("H", queue_sales, store_delay, products, sem_fabricator);
         TimeManager stores_timer = new TimeManager(stores);
 
         // delays dos fabricantes

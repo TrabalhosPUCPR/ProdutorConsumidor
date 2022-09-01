@@ -1,7 +1,6 @@
 package Entities.Transporter;
 
 import Entities.Queues.QueueDelivery;
-import Entities.Stores.Sales;
 import Entities.Tasks;
 
 import java.util.ArrayList;
@@ -21,9 +20,8 @@ public class Transporter extends Tasks {
     public void run(){
         try {
             while(true){
-                do{
-                    this.semaphore.acquire();
-                }while (this.limit <= this.current);
+                this.semaphore.acquire();
+                this.limit.acquire();
                 Delivery delivery = this.queueDelivery.removeFirst();
                 this.current++;
                 Random random = new Random();

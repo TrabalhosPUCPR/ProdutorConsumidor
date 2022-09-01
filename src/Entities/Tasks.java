@@ -6,11 +6,13 @@ import java.util.concurrent.Semaphore;
 public abstract class Tasks extends Entity{
 
     protected int current;
-    protected int limit;
+    protected Semaphore semaphore;
+    protected Semaphore limit;
 
     public Tasks(String name, Semaphore semaphore, int[] delays, ArrayList<String> productCatalog, int limit) {
-        super(name, semaphore, delays, productCatalog);
-        this.limit = limit;
+        super(name, delays, productCatalog);
+        this.semaphore = semaphore;
+        this.limit = new Semaphore(limit);
         this.current = 0;
     }
 
@@ -26,5 +28,6 @@ public abstract class Tasks extends Entity{
         }
         this.incrementCount();
         this.decrementCurrent();
+        this.limit.release();
     }
 }
