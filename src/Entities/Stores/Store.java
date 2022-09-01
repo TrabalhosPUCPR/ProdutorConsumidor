@@ -11,8 +11,8 @@ import java.util.concurrent.Semaphore;
 public class Store extends Entity{
     int[] prodSales_count;
     Semaphore sem_fabricator;
-    QueueSale queueSale;
 
+    QueueSale queueSale;
     public Store(String name, QueueSale queueSale, int[] delays, ArrayList<String> productCatalog, Semaphore sem_fabricator) {
         super(name, delays, productCatalog);
         this.sem_fabricator = sem_fabricator;

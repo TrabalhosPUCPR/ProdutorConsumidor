@@ -3,14 +3,14 @@ package Entities.Fabrication;
 import Entities.Queues.QueueDelivery;
 import Entities.Queues.QueueSale;
 import Entities.Stores.Sales;
-import Entities.Tasks;
+import Entities.Company;
 import Entities.TimeManager;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
-public class Fabricator extends Tasks {
+public class Fabricator extends Company {
     Semaphore sem_transport;
     QueueSale queue_sale;
     QueueDelivery queueDelivery;

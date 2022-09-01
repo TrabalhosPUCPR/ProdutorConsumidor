@@ -1,5 +1,7 @@
 package Entities;
 
+import Entities.Queues.Queue;
+
 import java.util.ArrayList;
 
 public abstract class Entity extends Thread implements DailyTask{

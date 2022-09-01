@@ -18,5 +18,4 @@ public class Transport extends Thread{
         this.transporter.doTask(this.delivery_delay);
         System.out.println(this.delivery.sales.getID() + " transportado!");
     }
-
 }

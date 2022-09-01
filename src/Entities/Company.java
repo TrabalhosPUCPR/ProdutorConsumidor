@@ -1,24 +1,21 @@
 package Entities;
 
+import Entities.Queues.Queue;
+
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
-public abstract class Tasks extends Entity{
+public abstract class Company extends Entity{
 
-    protected int current;
     protected Semaphore semaphore;
     protected Semaphore limit;
 
-    public Tasks(String name, Semaphore semaphore, int[] delays, ArrayList<String> productCatalog, int limit) {
+    public Company(String name, Semaphore semaphore, int[] delays, ArrayList<String> productCatalog, int limit) {
         super(name, delays, productCatalog);
         this.semaphore = semaphore;
         this.limit = new Semaphore(limit);
-        this.current = 0;
     }
 
-    public void decrementCurrent() {
-        this.current--;
-    }
     public void doTask(int timeTaken){
         this.addDelayTime(timeTaken);
         try {
@@ -27,7 +24,15 @@ public abstract class Tasks extends Entity{
             throw new RuntimeException(e);
         }
         this.incrementCount();
-        this.decrementCurrent();
         this.limit.release();
+    }
+
+    public void run(){
+        try {
+            this.semaphore.acquire();
+            this.limit.acquire();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

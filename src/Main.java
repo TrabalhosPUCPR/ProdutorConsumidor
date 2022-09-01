@@ -19,7 +19,6 @@ public class Main {
         QueueDelivery queue_deliveries = new QueueDelivery();
 
         // semaforos
-        Semaphore sem_loja = new Semaphore(1);
         Semaphore sem_fabricator = new Semaphore(0);
         Semaphore sem_transport = new Semaphore(0);
 
