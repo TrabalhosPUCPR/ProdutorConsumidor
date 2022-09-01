@@ -92,10 +92,8 @@ public class Main {
         for(Transporter transporter : transporters){
             transporter.start();
         }
-        int daysToWait = 3;
-        while(System.currentTimeMillis() - start <= ((long) TimeManager.DAY_DURATION * TimeManager.timeMultiplier) * daysToWait){}
-        System.out.println("\nFechado!");
-
+        int daysToWait = 10;
+        while(System.currentTimeMillis() - start <= ((long) TimeManager.DAY_DURATION * TimeManager.timeMultiplier) * (daysToWait));
         store_reports.print();
         fabricator_reports.print();
         transporter_reports.print();
