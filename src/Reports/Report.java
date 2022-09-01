@@ -1,5 +1,7 @@
 package Reports;
 
+import Entities.TimeManager;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,10 +34,8 @@ public abstract class Report {
 
     public void print(){
         try {
-            DateFormat date_format = new SimpleDateFormat("mm:ss");
-            Date time = new Date(this.elapsedTime());
             writer.write("RELATORIO " + this.name + ": \n");
-            writer.write("Tempo real aberto: " + date_format.format(time) + "\n");
+            writer.write("Tempo real aberto: " + TimeManager.toDateFormat(this.elapsedTime()) + "\n");
             writer.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);

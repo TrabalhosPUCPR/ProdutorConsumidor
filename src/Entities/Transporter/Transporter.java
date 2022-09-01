@@ -21,6 +21,7 @@ public class Transporter extends Company {
         while(true){
             try {
                 this.semaphore.acquire();
+                this.limit.acquire();
                 Delivery delivery = this.queueDelivery.removeFirst();
                 Random random = new Random();
                 Transport transport = new Transport(this, delivery, random.nextInt(this.delay[0], this.delay[1]));

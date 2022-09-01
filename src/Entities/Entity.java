@@ -1,7 +1,5 @@
 package Entities;
 
-import Entities.Queues.Queue;
-
 import java.util.ArrayList;
 
 public abstract class Entity extends Thread implements DailyTask{
@@ -42,14 +40,14 @@ public abstract class Entity extends Thread implements DailyTask{
     public void endDay(){
         this.daysPassed++;
         if(this.daily_times.size() == 0) {
-            this.averageDailyTimes.add(null);
+            this.averageDailyTimes.add(-1);
             return;
         }
         int sum = 0;
         for(Integer delay: this.daily_times) {
             sum += delay;
         }
-        this.averageDailyTimes.add(sum/this.daily_times.size());
+        this.averageDailyTimes.add((sum/this.daily_times.size())/TimeManager.TIME_MULTIPLIER);
         this.daily_times.clear();
     }
 

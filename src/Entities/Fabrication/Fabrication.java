@@ -25,7 +25,7 @@ public class Fabrication extends Thread{
     public void run() {
         System.out.println("Fabricando " + this.sales.getID());
         this.fabricator.doTask(this.delay);
-        System.out.println(this.sales.getID() + " fabricado!");
+        System.out.println(this.sales.getID() + " fabricado! Agora vai transportar!");
         this.queue_delivery.add(new Delivery(this.sales));
         this.sem_transport.release();
     }
