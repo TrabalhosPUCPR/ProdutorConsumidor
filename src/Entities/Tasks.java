@@ -17,4 +17,14 @@ public abstract class Tasks extends Entity{
     public void decrementCurrent() {
         this.current--;
     }
+    public void doTask(int timeTaken){
+        this.addDelayTime(timeTaken);
+        try {
+            sleep(timeTaken);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        this.incrementCount();
+        this.decrementCurrent();
+    }
 }

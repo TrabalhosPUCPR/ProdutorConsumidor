@@ -27,7 +27,7 @@ public class TransporterReport extends Report {
                 writer.write("Nome: " + transporter.getEntityName() + "\n");
                 writer.write("Total Transportado: " + transporter.getCount()  + "\n");
                 transportedTotal += transporter.getCount();
-                writer.write("Medias do tempo de transporte de cada dia: " + transporter.getDailyDelays());
+                writer.write("Medias do tempo de transporte de cada dia: " + transporter.getAverageDailyTimes());
                 writer.write("\n");
             }
             writer.write("Total transportado por todos os transportadores: " + transportedTotal + "\n\n\n");

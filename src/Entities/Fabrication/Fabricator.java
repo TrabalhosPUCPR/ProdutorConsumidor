@@ -4,8 +4,10 @@ import Entities.Queues.QueueDelivery;
 import Entities.Queues.QueueSale;
 import Entities.Stores.Sales;
 import Entities.Tasks;
+import Entities.TimeManager;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Fabricator extends Tasks {
@@ -23,13 +25,16 @@ public class Fabricator extends Tasks {
     @Override
     public void run() {
         try {
-            while(true){
-                do{
+            while (true) {
+                do {
                     this.semaphore.acquire();
-                }while (this.limit <= this.current);
+                } while (this.limit <= this.current);
                 this.current++;
                 Sales sale = this.queue_sale.removeFirst();
-                Fabrication fabrication = new Fabrication(this, this.queueDelivery, sale, sem_transport);
+                Random random = new Random();
+                int productIndex = this.productCatalog.indexOf(sale.getProduct());
+                int delay = random.nextInt(this.delay[productIndex], this.delay[productIndex] + TimeManager.delay(200));
+                Fabrication fabrication = new Fabrication(this, this.queueDelivery, sale, sem_transport, delay);
                 fabrication.start();
             }
         } catch (InterruptedException e) {

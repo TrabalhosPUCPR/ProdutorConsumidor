@@ -1,7 +1,5 @@
 package Entities;
 
-import Entities.Queues.QueueSale;
-
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
@@ -12,6 +10,8 @@ public abstract class Entity extends Thread implements DailyTask{
     protected int[] delay;
     protected ArrayList<String> productCatalog;
     protected int daysPassed;
+    ArrayList<Integer> daily_times = new ArrayList<>();
+    ArrayList<Integer> averageDailyTimes = new ArrayList<>();
 
     public Entity(String name, Semaphore semaphore, int[] delays, ArrayList<String> productCatalog) {
         this.name = name;
@@ -40,25 +40,32 @@ public abstract class Entity extends Thread implements DailyTask{
         return productCatalog;
     }
 
-    public int[] getDelay() {
-        return delay;
-    }
-
-    @Override
     public void endDay(){
         this.daysPassed++;
-        if(this.daily_times.size() == 0) return;
+        if(this.daily_times.size() == 0) {
+            this.averageDailyTimes.add(null);
+            return;
+        }
         int sum = 0;
-        for(Integer delay: this.daily_times){
+        for(Integer delay: this.daily_times) {
             sum += delay;
         }
-        this.averageDailyDelays.add(sum/this.daily_times.size());
+        this.averageDailyTimes.add(sum/this.daily_times.size());
         this.daily_times.clear();
     }
 
-
-
     public int getDaysPassed() {
         return daysPassed;
+    }
+    @Override
+    public void addDelayTime(Integer delay){
+        this.daily_times.add(delay);
+    }
+
+    public ArrayList<Integer> getDailyDelays(){
+        return this.daily_times;
+    }
+    public ArrayList<Integer> getAverageDailyTimes(){
+        return this.averageDailyTimes;
     }
 }

@@ -5,6 +5,7 @@ import Entities.Stores.Sales;
 import Entities.Tasks;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Transporter extends Tasks {
@@ -25,7 +26,8 @@ public class Transporter extends Tasks {
                 }while (this.limit <= this.current);
                 Delivery delivery = this.queueDelivery.removeFirst();
                 this.current++;
-                Transport transport = new Transport(this, delivery, this.delay);
+                Random random = new Random();
+                Transport transport = new Transport(this, delivery, random.nextInt(this.delay[0], this.delay[1]));
                 transport.start();
             }
         } catch (InterruptedException e) {

@@ -93,7 +93,7 @@ public class Main {
         for(Transporter transporter : transporters){
             transporter.start();
         }
-        int daysToWait = 7;
+        int daysToWait = 3;
         while(System.currentTimeMillis() - start <= ((long) TimeManager.DAY_DURATION * TimeManager.timeMultiplier) * daysToWait){}
         System.out.println("\nFechado!");
 

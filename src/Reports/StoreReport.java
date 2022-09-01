@@ -34,7 +34,7 @@ public class StoreReport extends Report{
                 writer.write("\n");
                 writer.write("Total de vendas: " + store.getCount() + "\n");
                 salesTotal += store.getCount();
-                writer.write("Medias do tempo entre duas vendas de cada dia: " + store.getAverageDailyDelays() + "\n");
+                writer.write("Media entre duas vendas de cada dia: " + store.getAverageDailyTimes() + "\n");
                 writer.write("\n");
             }
             writer.write("Total de vendas de todas as lojas: " + salesTotal + "\n\n\n");
