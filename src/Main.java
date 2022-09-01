@@ -94,11 +94,6 @@ public class Main {
         }
         int daysToWait = 10;
         while(System.currentTimeMillis() - start <= ((long) TimeManager.DAY_DURATION * TimeManager.TIME_MULTIPLIER) * daysToWait);
-        start = System.currentTimeMillis();
-        for (Store store : stores) {
-            store.interrupt();
-        }
-        while(System.currentTimeMillis() - start <= 3000);
         store_reports.print();
         fabricator_reports.print();
         transporter_reports.print();
