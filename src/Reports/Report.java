@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public abstract class Report {
     String name;
@@ -22,7 +21,7 @@ public abstract class Report {
             this.writer.write("");
             this.writer = new FileWriter(output_path, true);
         }catch (Exception ignored){
-
+            System.out.println("Erro ao criar o arquivo!");
         }
     }
 
@@ -36,11 +35,12 @@ public abstract class Report {
             DateFormat date_format = new SimpleDateFormat("mm:ss");
             Date time = new Date(this.elapsedTime());
             writer.write("RELATORIO " + this.name + ": \n");
-            writer.write("Tempo aberto: " + date_format.format(time) + "\n");
-            writer.write("\n");
+            writer.write("Tempo real aberto: " + date_format.format(time) + "\n");
             writer.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 }

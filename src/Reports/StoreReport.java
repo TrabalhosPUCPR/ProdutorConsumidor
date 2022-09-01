@@ -19,10 +19,11 @@ public class StoreReport extends Report{
         try {
             super.print();
             int salesTotal = 0;
+            writer.write("Dias simulado: " + this.stores[0].getDaysPassed() + "\n\n");
             for(Store store : this.stores){
-                writer.write("Nome: " + store.getStoreName() + "\n");
+                writer.write("Nome: " + store.getEntityName() + "\n");
                 writer.write("Catalogo: " );
-                for(String product : store.getCatalog()){
+                for(String product : store.getProductCatalog()){
                     writer.write(String.format("%1$8s", product));
                 }
                 writer.write("\n");
@@ -31,8 +32,9 @@ public class StoreReport extends Report{
                     writer.write(String.format("%1$8s", product));
                 }
                 writer.write("\n");
-                writer.write("Total de vendas: " + store.getSales_count() + "\n");
-                salesTotal += store.getSales_count();
+                writer.write("Total de vendas: " + store.getCount() + "\n");
+                salesTotal += store.getCount();
+                writer.write("Medias do tempo entre duas vendas de cada dia: " + store.getAverageDailyDelays() + "\n");
                 writer.write("\n");
             }
             writer.write("Total de vendas de todas as lojas: " + salesTotal + "\n\n\n");

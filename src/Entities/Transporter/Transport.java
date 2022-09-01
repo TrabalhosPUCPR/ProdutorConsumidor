@@ -18,11 +18,11 @@ public class Transport extends Thread{
     public void run() {
         try {
             Random random = new Random();
-            System.out.println("Transportando " + this.delivery.getVenda().getID_sale());
+            System.out.println("Transportando " + this.delivery.sales.getID());
             Thread.sleep(random.nextInt(this.delivery_delay[0], this.delivery_delay[1]));
-            this.transporter.count_delivered++;
-            this.transporter.n_transporting--;
-            System.out.println(this.delivery.getVenda().getID_sale() + " transportado!");
+            this.transporter.incrementCount();
+            this.transporter.decrementCurrent();
+            System.out.println(this.delivery.sales.getID() + " transportado!");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

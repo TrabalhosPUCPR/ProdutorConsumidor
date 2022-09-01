@@ -1,8 +1,8 @@
 package Entities.Fabrication;
 
-import Entities.Transporter.Delivery;
 import Entities.Queues.QueueDelivery;
 import Entities.Stores.Sales;
+import Entities.Transporter.Delivery;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
@@ -23,15 +23,15 @@ public class Fabrication extends Thread{
     @Override
     public void run() {
         try {
-            System.out.println("Fabricando " + this.sales.getID_sale());
+            System.out.println("Fabricando " + this.sales.getID());
             Random random = new Random();
-            int indexProduct = this.fabricator.catalog.indexOf(this.sales.getProduct());
-            int fabricationDelay =  random.nextInt(this.fabricator.fabrication_delay[indexProduct], this.fabricator.fabrication_delay[indexProduct] + 200);
+            int indexProduct = this.fabricator.getProductCatalog().indexOf(this.sales.getProduct());
+            int fabricationDelay =  random.nextInt(this.fabricator.getDelay()[indexProduct], this.fabricator.getDelay()[indexProduct] + 200);
             Thread.sleep(fabricationDelay);
-            System.out.println(this.sales.getID_sale() + " fabricado!");
-            this.fabricator.n_fabricating--;
+            System.out.println(this.sales.getID() + " fabricado!");
+            this.fabricator.decrementCurrent();
             this.fabricator.daily_times.add(fabricationDelay);
-            this.fabricator.fabricated_count++;
+            this.fabricator.incrementCount();
             this.queue_delivery.add(new Delivery(this.sales));
             this.sem_transport.release();
         } catch (InterruptedException e) {

@@ -2,21 +2,21 @@ package Entities.Stores;
 
 public class Sales {
 
-    String ID_sale;
-    String product;
+    String ID;
     Store store;
+    String product;
 
-    public Sales(String product, Store store, String id) {
+    public Sales(String ID, String product, Store store) {
+        this.ID = store.getEntityName() + ID;
         this.product = product;
         this.store = store;
-        this.ID_sale = store.name + id;
+    }
+
+    public String getID() {
+        return ID;
     }
 
     public String getProduct() {
         return product;
-    }
-
-    public String getID_sale() {
-        return ID_sale;
     }
 }

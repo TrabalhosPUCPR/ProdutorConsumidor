@@ -22,9 +22,12 @@ public class TransporterReport extends Report {
             super.print();
             int transportedTotal = 0;
             for(Transporter transporter : this.transporters){
-                writer.write("Nome: " + transporter.getTransporterName() + "\n");
-                writer.write("Total fabricado: " + transporter.getCount_delivered()  + "\n");
-                transportedTotal += transporter.getCount_delivered();
+                writer.write("Dias simulado: " + transporter.getDaysPassed() + "\n");
+                writer.write("\n");
+                writer.write("Nome: " + transporter.getEntityName() + "\n");
+                writer.write("Total Transportado: " + transporter.getCount()  + "\n");
+                transportedTotal += transporter.getCount();
+                writer.write("Medias do tempo de transporte de cada dia: " + transporter.getDailyDelays());
                 writer.write("\n");
             }
             writer.write("Total transportado por todos os transportadores: " + transportedTotal + "\n\n\n");

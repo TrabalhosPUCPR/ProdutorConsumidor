@@ -6,17 +6,17 @@ import java.util.LinkedList;
 
 public class QueueDelivery {
 
-    private final LinkedList<Delivery> deliveries;
+    LinkedList<Delivery> sales;
 
     public QueueDelivery() {
-        this.deliveries = new LinkedList<>();
+        this.sales = new LinkedList<>();
     }
     public void add(Delivery delivery){
-        this.deliveries.add(delivery);
+        this.sales.add(delivery);
     }
-    public Delivery removeFirst(){
-        Delivery delivery = this.deliveries.getFirst();
-        this.deliveries.remove();
-        return delivery;
+    public Delivery removeFirst(){ // remove e retorna o que foi removido
+        Delivery sales = this.sales.getFirst();
+        this.sales.remove();
+        return sales;
     }
 }
