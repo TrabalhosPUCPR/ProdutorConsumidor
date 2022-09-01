@@ -25,7 +25,7 @@ public class TimeManager extends Thread{
         while(true){
             if(System.currentTimeMillis() - startTime >= (long) TimeManager.DAY_DURATION * TimeManager.timeMultiplier){
 
-                System.out.println("\n\n\n NOVO DIA \n\n\n");
+                System.out.println("\n\n\n NOVO DIA \n\n");
 
                 startTime = System.currentTimeMillis();
                 for(DailyTask task : this.dailyTasks){
